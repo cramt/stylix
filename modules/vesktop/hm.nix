@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  opacity = lib.toHexString (builtins.ceil (config.stylix.opacity.applications * 255));
+  opacity = lib.strings.removePrefix "#" (lib.toHexString (builtins.ceil (config.stylix.opacity.applications * 255)));
   themeFile = (
     config.lib.stylix.colors // {
       opacity = opacity;

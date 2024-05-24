@@ -1,6 +1,11 @@
 { config, lib, ... }:
 let
-  themeFile = config.lib.stylix.colors {
+  opacity = lib.toHexString (builtins.ceil (config.stylix.opacity.applications * 255));
+  themeFile = (
+    config.lib.stylix.colors // {
+      opacity = opacity;
+    }
+  ) {
     template = ./template.mustache;
     extension = ".css";
   };
